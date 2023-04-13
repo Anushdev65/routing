@@ -1,18 +1,17 @@
 const productData = require('../data/products.json')
 const express = require('express');
-
 const router = express.Router();
+const { filterProducts } = require('../middlewares/product');
+
 
 //Returns all data
 
-router.get("/", (req, res) => {
-    const newProductData = []
-    productData.map((product) => {
-        const { id, title, price, category, image } = product
-        newProductData.push({ id, title, price, category, image })
-    })
-    res.json(productData)
-})
+router.get("/", filterProducts, (req, res) => {
+    res.json(req.productData);
+});
+
+
+
 
 //Return specific product
 //:productID is called Route parameter
