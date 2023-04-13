@@ -4,6 +4,7 @@ const router = express.Router();
 const { filterProducts } = require('../middlewares/product');
 
 
+
 //Returns all data
 
 router.get("/", filterProducts, (req, res) => {
